@@ -32,7 +32,7 @@ class Login extends CI_Controller {
 
 		//( $image , $fontsize , $string , $fontcolor )
 		imagestring($wh, $captcha_font, 25, 1,  $code, $fc);
- 
+
 		//buat gambar
 		header('content-type: image/png');
 		imagepng($wh);
@@ -60,9 +60,15 @@ class Login extends CI_Controller {
 
 	public function proseslogin()
 	{
-		$data=array();
-		$data["status"] = 'berhasil';
-		$data["keterangan"] = 'Anda berhasil Login';
-		echo json_encode($data);
+
+		if ($this->input->is_ajax_request()) {
+			$data=array();
+			$data["status"] = 'berhasil';
+			$data["keterangan"] = 'Anda berhasil Login';
+			echo json_encode($data);
+		}
+		else{
+			redirect('404_override');
+		}
 	}
 }

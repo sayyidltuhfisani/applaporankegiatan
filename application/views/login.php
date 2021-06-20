@@ -57,24 +57,11 @@
 					</span>
 					<div class="wrap-input100 validate-input m-b-12" data-validate = "Password is required">
 						
-						<input class="input100" type="text" name="captcha" placeholder="Masukan kode captcha di atas">
+						<input class="input100" type="number" name="captcha" placeholder="Masukan kode captcha di atas">
 						<span class="focus-input100"></span>
 					</div>
 					
-					<!-- <div class="flex-sb-m w-full p-b-48">
-						<div class="contact100-form-checkbox">
-							<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-							<label class="label-checkbox100" for="ckb1">
-								Remember me
-							</label>
-						</div>
 
-						<div>
-							<a href="#" class="txt3">
-								Forgot Password?
-							</a>
-						</div>
-					</div> -->
 
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn">
@@ -152,7 +139,23 @@
 
 		var input = $('.validate-input .input100');
 		var k=0;
+		var showPass = 0;
+		
+		$('.btn-show-pass').on('click', function(){
+			if(showPass == 0) {
+				$(this).next('input').attr('type','text');
+				$(this).find('i').removeClass('fa-eye');
+				$(this).find('i').addClass('fa-eye-slash');
+				showPass = 1;
+			}
+			else {
+				$(this).next('input').attr('type','password');
+				$(this).find('i').removeClass('fa-eye-slash');
+				$(this).find('i').addClass('fa-eye');
+				showPass = 0;
+			}
 
+		});
 
 		$('.validate-form .input100').each(function(){
 			$(this).focus(function(){
