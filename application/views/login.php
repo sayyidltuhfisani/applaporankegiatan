@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -140,7 +141,7 @@
 		var input = $('.validate-input .input100');
 		var k=0;
 		var showPass = 0;
-		
+
 		$('.btn-show-pass').on('click', function(){
 			if(showPass == 0) {
 				$(this).next('input').attr('type','text');
@@ -209,14 +210,15 @@
 							Swal.fire({
 
 								type: 'error',
+								position: 'top-end',
+								
 								title: data.keterangan,
 								showConfirmButton: false,
+								customClass: 'swal-wide',
 								timer: 1500,
-								text : data.jumlah 
-
 							}).then((result) => {
-									// location.reload();
-								})
+								location.reload();
+							})
 
 						}
 					},error:function(data) {

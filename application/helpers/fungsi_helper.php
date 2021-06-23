@@ -6,8 +6,11 @@
 
 		if ($user_session != '' and $level_session != ''){
 			redirect('home');
-			
+			// return 'home';
 		}
+		// else{
+		// 	return 'login';
+		// }
 
 	}
 

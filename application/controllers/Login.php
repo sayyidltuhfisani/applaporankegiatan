@@ -7,6 +7,7 @@ class Login extends CI_Controller {
 	
 	public function index()
 	{
+		session_ready();
 		$this->load->view('login');
 	}
 
@@ -17,7 +18,7 @@ class Login extends CI_Controller {
 		// exit();
 		 // untuk mengacak captcha
 		$code = $this->acakCaptcha();
-		// $_SESSION["code"] = $code;
+		
 
 		//lebar dan tinggi captcha
 		$wh = imagecreatetruecolor(163, 49);
@@ -44,17 +45,19 @@ class Login extends CI_Controller {
 		$alphabet = "0123456789";
 
 		//untuk menyatakan $pass sebagai array
-		$pass = array(); 
+		// $pass = array(); 
+		$digit='';
 
    		//masukkan -2 dalam string length
 		$panjangAlpha = strlen($alphabet) - 1; 
 		for ($i = 0; $i < 6; $i++) {
-			$n = rand(0, $panjangAlpha);
-			$pass[] = $alphabet[$n];
+			$digit .= rand(0, $panjangAlpha);
+			// $pass[] = $alphabet[$n];
 		}
-
+		$this->session->set_userdata('kode_captcha', $digit);
    		//ubah array menjadi string
-		return implode($pass); 
+		// return implode($pass); 
+		return $digit;
 	}
 	
 
@@ -63,12 +66,44 @@ class Login extends CI_Controller {
 
 		if ($this->input->is_ajax_request()) {
 			$data=array();
-			$data["status"] = 'berhasil';
-			$data["keterangan"] = 'Anda berhasil Login';
+
+			$nilaicap = htmlspecialchars($this->input->post('captcha'));
+			$username =htmlspecialchars($this->input->post('username'));
+			$pass= htmlspecialchars($this->input->post('pass'));
+			$cap = $this->session->userdata('kode_captcha');
+
+			if ($nilaicap != $cap) {
+				$data["status"] = 'gagal';
+				$data["keterangan"] = 'captcha tidak sesusai';
+			}
+			else{
+
+				$proses=$this->Login_model->login($pass,$username);
+
+				// $data["status"] = 'berhasil';
+				// $data["keterangan"] = $proses;
+				if ($proses['hasil'] == 'ada') {
+					$data["status"] = 'berhasil';
+					$data["keterangan"] = 'Anda berhasil Login';
+				}else{
+					$data["status"] = 'gagal';
+					$data["keterangan"] = 'Password dan Username Salah';
+				}
+
+				
+			}
 			echo json_encode($data);
 		}
 		else{
 			redirect('404_override');
 		}
 	}
+
+	public function keluar()
+	{
+		$items = array('nama','level','nama_lengkap');
+
+		$this->session->unset_userdata($items);
+
+		redirect('login');	}
 }
