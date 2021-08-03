@@ -21,6 +21,7 @@ class Login_model extends CI_Model {
 			$row=$query->row();
 			$items['hasil']='ada';
 			$addsession=array(
+				"id_login"=>$row->id_login,
 				"nama" =>$row->username,
 				"level"=>$row->level,
 				"nama_lengkap" =>$row->nama_lengkap

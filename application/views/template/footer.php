@@ -43,3 +43,23 @@
 
 </body>
 </html>
+
+<!-- modal -->
+<div class="modal fade" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="row">
+					<h5 class="modal-title ml-3" id="largeModalLabel"></h5>
+					<button id="close_modal" type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true" class="mr-3">&times;</span>
+					</button>
+				</div>
+			</div>
+			<div class="modal-body">
+
+			</div>
+
+		</div>
+	</div>
+</div>

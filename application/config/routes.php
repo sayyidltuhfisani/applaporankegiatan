@@ -56,3 +56,14 @@ $route['translate_uri_dashes'] = FALSE;
 $route['front/keycode']='login/kodecaptha';
 $route['proseslogin']='login/proseslogin';
 $route['keluar']='login/keluar';
+$route['laporan']='laporan';
+$route['cetak']='laporan/cetak';
+$route['kelender']='laporan/kelender';
+$route['tambahdanedit']='prosesdata/tambahdanedit';
+$route['formproses']='prosesdata/formproses';
+$route['listgambar']='prosesdata/listgambar';
+$route['tambahgambar']='prosesdata/tambahgambar';
+$route['hapusdata']='prosesdata/hapusdata';
+
+
+

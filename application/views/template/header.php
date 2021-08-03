@@ -28,6 +28,23 @@
 	<link href="https://cdn.jsdelivr.net/npm/weathericons@2.1.0/css/weather-icons.css" rel="stylesheet" />
 	<link href="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.css" rel="stylesheet" />
 
+
+	<link rel="stylesheet" href="<?= base_url('libereri/dashboard/') ?>assets/css/lib/datatable/dataTables.bootstrap.min.css">
+	<script src="<?= base_url('libereri/dashboard/') ?>assets/js/lib/data-table/datatables.min.js"></script>
+    <script src="<?= base_url('libereri/dashboard/') ?>assets/js/lib/data-table/dataTables.bootstrap.min.js"></script>
+    <script src="<?= base_url('libereri/dashboard/') ?>assets/js/lib/data-table/dataTables.buttons.min.js"></script>
+    <script src="<?= base_url('libereri/dashboard/') ?>assets/js/lib/data-table/buttons.bootstrap.min.js"></script>
+    <script src="<?= base_url('libereri/dashboard/') ?>assets/js/lib/data-table/jszip.min.js"></script>
+    <script src="<?= base_url('libereri/dashboard/') ?>assets/js/lib/data-table/vfs_fonts.js"></script>
+    <script src="<?= base_url('libereri/dashboard/') ?>assets/js/lib/data-table/buttons.html5.min.js"></script>
+    <script src="<?= base_url('libereri/dashboard/') ?>assets/js/lib/data-table/buttons.print.min.js"></script>
+    <script src="<?= base_url('libereri/dashboard/') ?>assets/js/lib/data-table/buttons.colVis.min.js"></script>
+    <script src="<?= base_url('libereri/dashboard/') ?>assets/js/init/datatables-init.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="<?= base_url('libereri/tambahan/')?>sweetalert2/sweetalert2.min.css">
+	<script src="<?= base_url('libereri/tambahan/')?>sweetalert2/sweetalert2.min.js"></script>
+
+
 	<style>
 	#weatherWidget .currentDesc {
 		color: #ffffff!important;
@@ -62,6 +79,11 @@
 	#cellPaiChart{
 		height: 160px;
 	}
+	.swal-wide{
+		width:450px !important;
+		font-size:14px;
+		/*height: 40px !important;*/
+	}
 
 </style>
 </head>
@@ -73,22 +95,23 @@
 			<div id="main-menu" class="main-menu collapse navbar-collapse">
 				<ul class="nav navbar-nav">
 					<li class="active">
-						<a href="index.html"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
+						<a href="<?= base_url()  ?>"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
 					</li>
 					<!-- <li class="menu-title">UI elements</li>//.menu-title -->
-					<li class="menu-item-has-children dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>Components</a>
-						<ul class="sub-menu children dropdown-menu">                            <li><i class="fa fa-puzzle-piece"></i><a href="ui-buttons.html">Buttons</a></li>
-							<li><i class="fa fa-id-badge"></i><a href="ui-badges.html">Badges</a></li>
-							<li><i class="fa fa-bars"></i><a href="ui-tabs.html">Tabs</a></li>
-
-
-						</ul>
+					
+					<li>
+						<a href="<?= base_url('laporan')  ?>"> <i class="menu-icon ti-email"></i>Laporan </a>
 					</li>
 
 					<li>
-						<a href="widgets.html"> <i class="menu-icon ti-email"></i>Widgets </a>
+						<a href="<?= base_url('cetak')  ?>"> <i class="menu-icon ti-email"></i>Cetak </a>
 					</li>
+
+					<li>
+						<a href="<?= base_url('kelender')  ?>"> <i class="menu-icon ti-email"></i>Kelender </a>
+					</li>
+					
+
 
 				</ul>
 			</div><!-- /.navbar-collapse -->
